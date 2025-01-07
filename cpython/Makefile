@@ -43,7 +43,7 @@ $(PYBUILD)/.patched_makefile:
 	cd $(PYBUILD) && sed -i -e 's/libinstall:.*/libinstall:/' Makefile;
 	# Inject extra objects into libpython3.12.a so we don't have to link them
 	# separately
-	cd $(PYBUILD) && sed -i '/MODOBJS=/s/$$/ $(LIBPYTHON_EXTRA_OBJECTS)/' Makefile
+	cd $(PYBUILD) && sed -i '' '/MODOBJS=/s/$$/ $(LIBPYTHON_EXTRA_OBJECTS)/' Makefile
 	touch $(PYBUILD)/.patched_makefile
 
 $(PYINSTALL)/lib/$(PYLIB): $(PYBUILD)/$(PYLIB) sysconfigdata $(PYBUILD)/.patched_makefile
